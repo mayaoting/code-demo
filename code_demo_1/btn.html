@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">click</button>
+    <div id="number"></div>
+    <script>
+        // DOMContentLoaded
+        (() => {
+            const btn1 = document.getElementById('btn1')
+            const number = document.getElementById('number')
+            function clickValidateTime() {
+                let num = 10
+                number.innerHTML = num
+                btn1.setAttribute('disabled',true)
+                const time = setInterval(() => {
+                    num--;
+                    if(num < 0) {
+                        btn1.removeAttribute('disabled')
+                        number.innerHTML = ''
+                        clearInterval(time)
+                        return;
+                    }
+                    number.innerHTML = num
+                }, 1000);
+                // btn1.addEventListener('click', clickValidateTime, true)
+                btn1.onclick = clickValidateTime
+            }
+        })()
+    </script>
+</body>
+</html>
